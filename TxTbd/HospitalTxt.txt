@@ -1,0 +1,28 @@
+create databse Hospital
+
+
+create table Pacientes(
+id_pacientes int primary key auto_increment,
+nomePaciente varchar(100) not null,
+enderecoPaciente varchar(100) not null,
+pacienteConvenio varchar(100) not null
+);
+
+create table Medicos(
+id_medico int primary key auto increment,
+nomeMedico varchar(100) not null,
+crmMedico varchar(100) not null,
+)
+
+create table Consultas(
+id_Consulta int primary key auto_increment,
+dateConsulta date not null,
+timeConstulta time not null,
+
+id_fk_paciente int not null,
+foreign key(id_fk_paciente) references Pacientes(id_pacientes),
+
+id_fk_medico int not null,
+foreign key(id_fk_medico) references Medicos(id_medico)
+)
+
