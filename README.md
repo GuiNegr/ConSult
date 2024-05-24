@@ -1,6 +1,6 @@
-##ConSult
+#ConSult
 
-## #IDEIA 
+##IDEIA 
 	Ideia do projeto será criar uma plataforma para utilização de funcionarios em hospitais, aonde podem consultar: pacientes, consultas e medicos.
 		Projeto feito e utilizado em JAVA com MySql.
 
