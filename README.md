@@ -1,37 +1,32 @@
-#ConSult
+# IDEIA
+A ideia do projeto é criar uma plataforma para utilização de funcionários em hospitais, onde podem consultar: pacientes, consultas e médicos.
+O projeto será feito e utilizado em JAVA com MySQL.
 
-##IDEIA 
-	Ideia do projeto será criar uma plataforma para utilização de funcionarios em hospitais, aonde podem consultar: pacientes, consultas e medicos.
-		Projeto feito e utilizado em JAVA com MySql.
+## FERRAMENTAS
+Utilizarei as bibliotecas padrões do JAVA.
+- MySQL
+- JDBC
 
-## **#FERRAMENTAS**
-	Utilizarei a bibliotecas padrões do JAVA.
-	MySQL
-	JDBC
+## CARACTERÍSTICAS DO PROJETO
+Projeto feito utilizando o Modelo MVC.
 
-## **#CARACTERISTICAS_DO_PROJETO**
-	Projeto feito utilizando o Modelo MVC
+# TaskList
 
-
-
-
-# **TaskList**
-
-- [x] Criação Model(PACIENTE,MEDICO,CONSULTAS)
+- [x] Criação Model (PACIENTE, MEDICO, CONSULTAS)
 - [x] Classe de conexão ao BD
 - [x] Criação das entidades
 - [ ] Login
 - [ ] Create Pacientes
-- [ ] Read Pacientes(vai selecionar apenas por nome)
+- [ ] Read Pacientes (vai selecionar apenas por nome)
 - [ ] Delete Pacientes
 - [ ] Update Pacientes
 - [ ] Create Medico
-- [ ] Read Medicos(VAI SER TODOS OS MEDICOS DO SISTEMA)
+- [ ] Read Medicos (VAI SER TODOS OS MEDICOS DO SISTEMA)
 - [ ] Delete Medicos
 - [ ] Update Medicos
 - [ ] Create consulta
 - [ ] Read consulta
 - [ ] Delete consulta
 - [ ] Update Consulta
-- [ ] Interface Grafica
+- [ ] Interface Gráfica
 - [ ] Finalização
