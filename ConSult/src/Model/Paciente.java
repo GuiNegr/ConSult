@@ -1,7 +1,7 @@
 package Model;
 
 public class Paciente {
-    private String id_paciente;
+    private String cpfPaciente;
     private String nomePaciente;
     private String enderecoPaciente;
     private String pacienteConvenio;
@@ -12,19 +12,19 @@ public class Paciente {
         this.pacienteConvenio = pacienteConvenio;
     }
 
-    public Paciente(String id_paciente, String nomePaciente, String enderecoPaciente, String pacienteConvenio) {
-        this.id_paciente = id_paciente;
+    public Paciente(String cpfPaciente, String nomePaciente, String enderecoPaciente, String pacienteConvenio) {
+        this.cpfPaciente = cpfPaciente;
         this.nomePaciente = nomePaciente;
         this.enderecoPaciente = enderecoPaciente;
         this.pacienteConvenio = pacienteConvenio;
     }
 
-    public String getId_paciente() {
-        return id_paciente;
+    public String getCpfPaciente() {
+        return cpfPaciente;
     }
 
-    public void setId_paciente(String id_paciente) {
-        this.id_paciente = id_paciente;
+    public void setCpfPaciente(String cpfPaciente) {
+        this.cpfPaciente = cpfPaciente;
     }
 
     public String getNomePaciente() {
