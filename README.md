@@ -12,21 +12,21 @@ Projeto feito utilizando o Modelo MVC.
 
 # TaskList
 
-- [x] Criação Model (PACIENTE, MEDICO, CONSULTAS)
+- [x] Criação Model(PACIENTE,MEDICO,CONSULTAS)
 - [x] Classe de conexão ao BD
 - [x] Criação das entidades
 - [ ] Login
-- [ ] Create Pacientes
-- [ ] Read Pacientes (vai selecionar apenas por nome)
-- [ ] Delete Pacientes
-- [ ] Update Pacientes
+- [x] Create Pacientes
+- [ ] Read Pacientes(vai selecionar apenas por nome)
+- [x] Delete Pacientes
+- [x] Update Pacientes
 - [ ] Create Medico
-- [ ] Read Medicos (VAI SER TODOS OS MEDICOS DO SISTEMA)
+- [ ] Read Medicos(VAI SER TODOS OS MEDICOS DO SISTEMA)
 - [ ] Delete Medicos
 - [ ] Update Medicos
 - [ ] Create consulta
 - [ ] Read consulta
 - [ ] Delete consulta
 - [ ] Update Consulta
-- [ ] Interface Gráfica
+- [ ] Interface Grafica
 - [ ] Finalização
