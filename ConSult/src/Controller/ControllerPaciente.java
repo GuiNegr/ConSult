@@ -5,7 +5,10 @@ import Model.Paciente;
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ControllerPaciente {
 
@@ -59,7 +62,28 @@ public class ControllerPaciente {
         }catch (SQLException e){
             JOptionPane.showMessageDialog(null,"ERROR UPDATE TOTAL: "+e.getMessage());
         }
+    }
 
+    public List<Paciente> readPaciente(){
+        String sql = "SELECT * FROM PACIENTES";
+        List<Paciente> pacientes = new ArrayList<>();
+        try {
+            Connection connection = new ConexaoDao().conecta();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String cpf = resultSet.getNString("cpfPaciente");
+                String nome = resultSet.getNString("nomePaciente");
+                String endereco = resultSet.getNString("enderecoPaciente");
+                String convenio = resultSet.getNString("pacienteConvenio");
+                Paciente paciente = new Paciente(cpf,nome,endereco,convenio);
+                pacientes.add(paciente);
+            }
+            return pacientes;
+        }catch (SQLException e){
+                JOptionPane.showMessageDialog(null,"ERRO READ PACIENTE: "+e.getMessage());
+                return null;
+        }
     }
 
 }
