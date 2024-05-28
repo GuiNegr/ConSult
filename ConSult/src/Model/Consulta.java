@@ -7,9 +7,9 @@ public class Consulta {
     private Date dataConsulta;
     private Time timeConsulta;
     private String id_fk_paciente;
-    private String id_fk_medico;
+    private int id_fk_medico;
 
-    public Consulta(String id_Consulta, Date dataConsulta, Time timeConsulta, String id_fk_paciente, String id_fk_medico) {
+    public Consulta(String id_Consulta, Date dataConsulta, Time timeConsulta, String id_fk_paciente, int id_fk_medico) {
         this.id_Consulta = id_Consulta;
         this.dataConsulta = dataConsulta;
         this.timeConsulta = timeConsulta;
@@ -17,7 +17,7 @@ public class Consulta {
         this.id_fk_medico = id_fk_medico;
     }
 
-    public Consulta(Date dataConsulta, Time timeConsulta, String id_fk_paciente, String id_fk_medico) {
+    public Consulta(Date dataConsulta, Time timeConsulta, String id_fk_paciente, int id_fk_medico) {
         this.dataConsulta = dataConsulta;
         this.timeConsulta = timeConsulta;
         this.id_fk_paciente = id_fk_paciente;
@@ -56,11 +56,11 @@ public class Consulta {
         this.id_fk_paciente = id_fk_paciente;
     }
 
-    public String getId_fk_medico() {
+    public int getId_fk_medico() {
         return id_fk_medico;
     }
 
-    public void setId_fk_medico(String id_fk_medico) {
+    public void setId_fk_medico(int id_fk_medico) {
         this.id_fk_medico = id_fk_medico;
     }
 }

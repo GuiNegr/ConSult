@@ -1,7 +1,7 @@
-import View.LoginForm;
+import Controller.ConsultaController;
 
 public class Main {
     public static void main(String[] args) {
-        new LoginForm();
+        System.out.println(new ConsultaController().readConsulta("1234562891"));
     }
 }

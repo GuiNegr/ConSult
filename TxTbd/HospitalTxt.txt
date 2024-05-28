@@ -9,10 +9,9 @@ pacienteConvenio varchar(100) not null
 );
 
 create table Medicos(
-id_medico int primary key auto increment,
+crmMedico int primary key,
 nomeMedico varchar(100) not null,
-crmMedico varchar(100) not null,
-)
+);
 
 create table Consultas(
 id_Consulta int primary key auto_increment,
@@ -26,3 +25,8 @@ id_fk_medico int not null,
 foreign key(id_fk_medico) references Medicos(id_medico)
 )
 
+create table login(
+id int primary key auto_increment,
+login varchar(50) not null,
+password varchar(50) not null
+);
