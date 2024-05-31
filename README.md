@@ -40,3 +40,4 @@
 # Anotações
 	-para criar consultas necessita de um cast para date e time sql.
 	
+](https://www.youtube.com/channel/UCLhJXvljm3IgPezI7luSNEQ)
