@@ -5,12 +5,15 @@ create table Pacientes(
 cpfPaciente varchar(11) not null primary key
 nomePaciente varchar(100) not null,
 enderecoPaciente varchar(100) not null,
-pacienteConvenio varchar(100) not null
+pacienteConvenio varchar(100) not null,
+on delete cascade
 );
 
 create table Medicos(
 crmMedico int primary key,
-nomeMedico varchar(100) not null,
+nomeMedico varchar(100) not null
+on delete cascade
+,
 );
 
 create table Consultas(
@@ -22,7 +25,7 @@ id_fk_paciente varchar(11) not null,
 foreign key(id_fk_paciente) references Pacientes(cpfPaciente),
 
 id_fk_medico int not null,
-foreign key(id_fk_medico) references Medicos(id_medico)
+foreign key(id_fk_medico) references Medicos(crmMedico)
 )
 
 create table login(
