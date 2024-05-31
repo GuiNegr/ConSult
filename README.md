@@ -12,7 +12,6 @@
 
 
 
-
 # **TaskList**
 
 - [x] Criação Model(PACIENTE,MEDICO,CONSULTAS)
@@ -24,15 +23,17 @@
 - [x] Delete Pacientes
 - [x] Update Pacientes
 - [x] Create Medico(CRM DO MEDICO VAI SER O ID)
-- [ ] Read Medicos(VAI SER TODOS OS MEDICOS DO SISTEMA)
-- [ ] Delete Medicos
-- [ ] Update Medicos
+- [x] Read Medicos(VAI SER TODOS OS MEDICOS DO SISTEMA)
+- [x] Delete Medicos
+- [x] Update Medicos
 - [x] Create consulta
-- [ ] Read consulta
-- [ ] Delete consulta
-- [ ] Update Consulta
+- [x] Read consulta
+- [x] Delete consulta
+- [x] Update Consulta
 - [ ] Interface Grafica
 - [ ] Finalização
+
+
 
 
 
