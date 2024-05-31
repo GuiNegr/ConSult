@@ -40,4 +40,7 @@
 # Anotações
 	-para criar consultas necessita de um cast para date e time sql.
 	
-](https://www.youtube.com/channel/UCLhJXvljm3IgPezI7luSNEQ)
+
+
+	Esse o meu canal aonde estou postando as atualizações do projeto e como está indo a construção.
+(https://www.youtube.com/channel/UCLhJXvljm3IgPezI7luSNEQ)
