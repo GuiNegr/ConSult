@@ -42,5 +42,8 @@
 	
 
 
-	Esse o meu canal aonde estou postando as atualizações do projeto e como está indo a construção.
+
+
+#Extras
+Esse o meu canal aonde estou postando as atualizações do projeto e como está indo a construção.
 (https://www.youtube.com/channel/UCLhJXvljm3IgPezI7luSNEQ)
