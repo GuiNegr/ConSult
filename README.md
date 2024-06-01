@@ -40,6 +40,18 @@
 
 # Anotações
 	-para criar consultas necessita de um cast para date e time sql.
+
+	-funcionalidade de delete é algo banal para nossa regra de negocios. Não será utilizada na versão final.
+	- Login 
+	Adicionar um identificador para saber qual é o tipo do usuario logado.
+
+	-Componentes da tela
+	Telas
+	-Login
+		Adicionar um identificador para saber qual é o tipo do usuario logado.
+	-User -Inicial
+		BorderLayout para colocar o componente de pesquisa.
+	-Medicos
 	
 
 
