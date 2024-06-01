@@ -50,4 +50,5 @@ public class Paciente {
     public void setPacienteConvenio(String pacienteConvenio) {
         this.pacienteConvenio = pacienteConvenio;
     }
+
 }
