@@ -11,7 +11,6 @@
 	Projeto feito utilizando o Modelo MVC
 
 
-
 # **TaskList**
 
 - [x] Criação Model(PACIENTE,MEDICO,CONSULTAS)
@@ -30,8 +29,11 @@
 - [x] Read consulta
 - [x] Delete consulta
 - [x] Update Consulta
-- [ ] Interface Grafica
+- [x] Interface Grafica - Login
+- [x] aperfeiçoamento do login
+- [x] inteface Grafica - User
 - [ ] Finalização
+
 
 
 
