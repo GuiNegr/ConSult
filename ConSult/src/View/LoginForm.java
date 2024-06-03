@@ -50,11 +50,15 @@ public class LoginForm extends JFrame implements ActionListener{
         if(e.getSource() == botao){
             String login = loginTXT.getText();
             String pass = passTxt.getText();
-            if(new LoginController().verifica(login,pass)){
-                JOptionPane.showMessageDialog(null,"FOI DEMAIS");
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "meu deus mto ruim em java");
+            String stg = new LoginController().getTipo(login,pass);
+            if(stg.equalsIgnoreCase("USER")){
+                new UserInicial();
+            } else if (stg.equalsIgnoreCase("ADMIN")) {
+                JOptionPane.showMessageDialog(null,"olá admin");
+            }else if(stg.equalsIgnoreCase("MEDICO")){
+                JOptionPane.showMessageDialog(null,"olá medico");
+            }else {
+                JOptionPane.showMessageDialog(null,"ERRO DE USUARIO NÃO ENCONTRADO");
             }
         }
     }

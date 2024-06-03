@@ -12,7 +12,7 @@ public class ConexaoDao {
         try{
             String url = "jdbc:mysql://localhost:3306/Hospital?user=root&password=root";
             conexao = DriverManager.getConnection(url);
-            JOptionPane.showMessageDialog(null, "CONECTA ITS WORKING");
+
         }catch (SQLException e){
             JOptionPane.showMessageDialog(null,"ERRO CONECTA: "+e.getMessage());
         }
