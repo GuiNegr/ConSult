@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ControllerPaciente {
 
-    public void createPaciente(Paciente paciente){
+    public static void createPaciente(Paciente paciente){
         String SQL = "insert into pacientes (cpfPaciente, nomePaciente, enderecoPaciente , pacienteConvenio) values (?,?,?,?)";
 
         try{
@@ -23,7 +23,7 @@ public class ControllerPaciente {
             preparedStatement.setString(3, paciente.getEnderecoPaciente());
             preparedStatement.setString(4, paciente.getPacienteConvenio());
             preparedStatement.execute();
-            JOptionPane.showMessageDialog(null,"criado no bd");
+            JOptionPane.showMessageDialog(null,"Paciente inserido na base de dados");
 
         }catch (SQLException e){
             JOptionPane.showMessageDialog(null,"Error Create: "+e.getMessage());
@@ -46,7 +46,7 @@ public class ControllerPaciente {
         }
     }
 
-    public void updatePaciete(Paciente paciente){
+    public static void updatePaciete(Paciente paciente){
         String SQL = "UPDATE PACIENTES SET nomePaciente = ?, enderecoPaciente = ?, pacienteConvenio = ? where cpfPaciente = ?";
 
         try{
@@ -57,14 +57,14 @@ public class ControllerPaciente {
             preparedStatement.setString(3, paciente.getPacienteConvenio());
             preparedStatement.setString(4, paciente.getCpfPaciente());
             preparedStatement.execute();
-            JOptionPane.showMessageDialog(null,"Upadate is working");
+            JOptionPane.showMessageDialog(null,"Atualizado com sucesso");
 
         }catch (SQLException e){
             JOptionPane.showMessageDialog(null,"ERROR UPDATE TOTAL: "+e.getMessage());
         }
     }
 
-    public List<Paciente> readPaciente(){
+    public static  List<Paciente> readPaciente(){
         String sql = "SELECT * FROM PACIENTES";
         List<Paciente> pacientes = new ArrayList<>();
         try {
@@ -84,6 +84,36 @@ public class ControllerPaciente {
                 JOptionPane.showMessageDialog(null,"ERRO READ PACIENTE: "+e.getMessage());
                 return null;
         }
+    }
+
+    private static List<String> readCpf(){
+        String sql = "SELECT * FROM PACIENTES";
+        List<String> cpfs = new ArrayList<>();
+        try {
+            Connection connection = new ConexaoDao().conecta();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String cpf = resultSet.getNString("cpfPaciente");
+                cpfs.add(cpf);
+            }
+            return cpfs;
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null,"ERRO READ PACIENTE: "+e.getMessage());
+            return null;
+        }
+    }
+
+    public static Paciente returnWithCpf(String cpf){
+        List<String> cpfs = readCpf();
+        List<Paciente> rdsPacientes = readPaciente();
+        int pos = 0;
+        if(cpfs.contains(cpf)){
+             pos = cpfs.indexOf(cpf);
+        }
+        rdsPacientes.get(pos);
+        Paciente paciente =  rdsPacientes.get(pos);
+        return paciente;
     }
 
 }

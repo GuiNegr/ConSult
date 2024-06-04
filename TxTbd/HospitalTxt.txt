@@ -31,5 +31,6 @@ foreign key(id_fk_medico) references Medicos(crmMedico)
 create table login(
 id int primary key auto_increment,
 login varchar(50) not null,
-password varchar(50) not null
+password varchar(50) not null,
+type varcahr(50) not null
 );

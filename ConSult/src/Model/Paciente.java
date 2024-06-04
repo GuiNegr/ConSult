@@ -12,6 +12,10 @@ public class Paciente {
         this.pacienteConvenio = pacienteConvenio;
     }
 
+    public Paciente(String cpfPaciente) {
+        this.cpfPaciente = cpfPaciente;
+    }
+
     public Paciente(String cpfPaciente, String nomePaciente, String enderecoPaciente, String pacienteConvenio) {
         this.cpfPaciente = cpfPaciente;
         this.nomePaciente = nomePaciente;
