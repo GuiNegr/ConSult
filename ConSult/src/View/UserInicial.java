@@ -1,10 +1,16 @@
 package View;
 
+import Controller.ControllerPaciente;
+import Model.Paciente;
+
 import javax.swing.*;
 import java.awt.*;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 
-public class UserInicial extends JFrame{
+public class UserInicial extends JFrame implements ActionListener {
     private JLabel consult;
     private JButton rdPac;
     private JButton rdMedc;
@@ -31,6 +37,79 @@ public class UserInicial extends JFrame{
         painelButtons.add(crtPac);
         painelButtons.add(crtMedc);
         painelButtons.add(crtConsu);
+        painelLogo = painelLabel();
+        consult = label("ConSult");
+        painelLogo.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        painelLogo.add(consult, gbc);
+
+
+        add(painelLogo,BorderLayout.CENTER);
+        add(painelButtons,BorderLayout.WEST);
+        setVisible(true);
+    }
+
+
+    private JPanel painelLabel(){
+        JPanel painel = new JPanel();
+        painel.setBackground(Color.WHITE);
+        add(painel);
+        return painel;
+    }
+
+    private JPanel painelBotao(){
+        JPanel painel = new JPanel();
+        painel.setBackground(Color.white);
+        add(painel);
+
+        return painel;
+    }
+    private JButton botao(String text){
+        JButton botao = new JButton();
+        botao.setText(text);
+        Font fonte = monteserrat();
+        botao.setFont(fonte);
+        botao.setBackground(new Color(71, 35, 189, 255));
+        botao.setForeground(new Color(231, 201, 144));
+        botao.addActionListener(this);
+        add(botao);
+        return botao;
+
+    }
+
+    public static Font monteserrat(){
+        try{
+            Font monte = Font.createFont(Font.TRUETYPE_FONT,new File("C:\\Users\\Gui\\Desktop\\Consult\\ConSult\\src\\Fonte\\Montserrat\\static\\Montserrat-Bold.ttf")).deriveFont(Font.BOLD,40);
+            return monte;
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+    private JLabel label(String text){
+        JLabel label = new JLabel();
+        label.setText(text);
+        label.setBackground(new Color(71, 35, 189, 255));
+        label.setFont(monteserrat());
+        return label;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == crtPac){
+            new PacientesView();
+            dispose();
+        }
+        if(e.getSource() == rdPac){
+            String cpf = JOptionPane.showInputDialog(null,"Insira o cpf do paciente");
+            Paciente paciente = ControllerPaciente.returnWithCpf(cpf);
+            new PacientesView(paciente);
+            dispose();
+
+        }
 
         painelLogo = painelLabel();
         consult = label("ConSult");

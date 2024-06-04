@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 public class LoginForm extends JFrame implements ActionListener{
 
     private JTextField loginTXT;
-    private JTextField passTxt;
+    private JPasswordField passTxt;
     private JButton botao;
 
 
@@ -20,7 +20,7 @@ public class LoginForm extends JFrame implements ActionListener{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         loginTXT = textComponent("User Login");
-        passTxt = textComponent("User Pass");
+        passTxt = pass("User Pass");
         botao = botao("LOGIN");
         getContentPane().setLayout(new GridLayout(3,1));
         setVisible(true);
@@ -37,6 +37,15 @@ public class LoginForm extends JFrame implements ActionListener{
        return botao;
     }
 
+    public JPasswordField pass(String text){
+        JPasswordField txt = new JPasswordField();
+        txt.setText(text);
+        txt.setForeground(new Color(231, 201, 144));
+        txt.setFont(new Font("robot",Font.BOLD,22));
+        add(txt);
+        return txt;
+    }
+
     public JTextField textComponent(String text){
       JTextField txt = new JTextField();
       txt.setText(text);
@@ -51,6 +60,10 @@ public class LoginForm extends JFrame implements ActionListener{
             String login = loginTXT.getText();
             String pass = passTxt.getText();
             String stg = new LoginController().getTipo(login,pass);
+            setVisible(false);
+            if(stg.equalsIgnoreCase("USER")){
+                new UserInicial();
+                dispose();
             if(stg.equalsIgnoreCase("USER")){
                 new UserInicial();
             } else if (stg.equalsIgnoreCase("ADMIN")) {
