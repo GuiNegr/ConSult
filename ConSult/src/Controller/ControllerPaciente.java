@@ -105,15 +105,23 @@ public class ControllerPaciente {
     }
 
     public static Paciente returnWithCpf(String cpf){
-        List<String> cpfs = readCpf();
         List<Paciente> rdsPacientes = readPaciente();
+        int pos = getPos(cpf);
+        if(pos >= 0){
+            Paciente paciente =  rdsPacientes.get(pos);
+            return paciente;
+        }else{
+            JOptionPane.showMessageDialog(null,"PACIENTE NÃO ENCONTRADO");
+            return null;
+        }
+    }
+    private static int getPos(String cpf){
+        List<String> cpfs = readCpf();
         int pos = 0;
         if(cpfs.contains(cpf)){
-             pos = cpfs.indexOf(cpf);
-        }
-        rdsPacientes.get(pos);
-        Paciente paciente =  rdsPacientes.get(pos);
-        return paciente;
+            pos = cpfs.indexOf(cpf);
+            return pos;
+        }else return  -1;
     }
 
 }

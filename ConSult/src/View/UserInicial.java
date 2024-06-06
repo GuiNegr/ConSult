@@ -1,6 +1,8 @@
 package View;
 
 import Controller.ControllerPaciente;
+import Controller.MedicoController;
+import Model.Medico;
 import Model.Paciente;
 
 import javax.swing.*;
@@ -108,7 +110,16 @@ public class UserInicial extends JFrame implements ActionListener {
             Paciente paciente = ControllerPaciente.returnWithCpf(cpf);
             new PacientesView(paciente);
             dispose();
-
+        }
+        if(e.getSource() == crtMedc){
+            dispose();
+            new MedicoAddUpdate();
+        }
+        if(e.getSource() == rdMedc){
+            String crm = JOptionPane.showInputDialog(null,"Insira o crm do medico desejado");
+            Medico medico = MedicoController.returnWithCrm(Integer.parseInt(crm));
+            new MedicoAddUpdate(medico);
+            dispose();
         }
     }
 }
