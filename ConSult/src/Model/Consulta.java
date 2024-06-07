@@ -63,4 +63,15 @@ public class Consulta {
     public void setId_fk_medico(int id_fk_medico) {
         this.id_fk_medico = id_fk_medico;
     }
+
+
+    @Override
+    public String toString() {
+        return "Consulta{" +
+                "timeConsulta=" + timeConsulta +
+                ", id_fk_medico=" + id_fk_medico +
+                ", id_fk_paciente='" + id_fk_paciente + '\'' +
+                ", dataConsulta=" + dataConsulta +
+                '}';
+    }
 }

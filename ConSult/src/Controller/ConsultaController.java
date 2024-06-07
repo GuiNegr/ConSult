@@ -12,7 +12,7 @@ import java.util.List;
 public class ConsultaController {
 
 
-    public void CreateConsulta(Consulta consulta){
+    public static void CreateConsulta(Consulta consulta){
         String sql = "insert into Consultas (dateConsulta,timeConstulta,id_fk_paciente,id_fk_medico) values (?,?,?,?)";
 
         try{

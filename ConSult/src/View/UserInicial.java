@@ -1,6 +1,8 @@
 package View;
 
 import Controller.ControllerPaciente;
+import Controller.MedicoController;
+import Model.Medico;
 import Model.Paciente;
 
 import javax.swing.*;
@@ -9,6 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.text.ParseException;
 
 public class UserInicial extends JFrame implements ActionListener {
     private JLabel consult;
@@ -89,6 +92,7 @@ public class UserInicial extends JFrame implements ActionListener {
             return null;
         }
     }
+
     private JLabel label(String text){
         JLabel label = new JLabel();
         label.setText(text);
@@ -108,7 +112,24 @@ public class UserInicial extends JFrame implements ActionListener {
             Paciente paciente = ControllerPaciente.returnWithCpf(cpf);
             new PacientesView(paciente);
             dispose();
-
+        }
+        if(e.getSource() == crtMedc){
+            dispose();
+            new MedicoAddUpdate();
+        }
+        if(e.getSource() == rdMedc){
+            String crm = JOptionPane.showInputDialog(null,"Insira o crm do medico desejado");
+            Medico medico = MedicoController.returnWithCrm(Integer.parseInt(crm));
+            new MedicoAddUpdate(medico);
+            dispose();
+        }
+        if(e.getSource() == crtConsu){
+           try{
+               new AgendarConsulta();
+               dispose();
+           }catch (ParseException a){
+               JOptionPane.showMessageDialog(null,a.getMessage());
+           }
         }
 
         painelLogo = painelLabel();
