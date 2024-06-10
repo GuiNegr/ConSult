@@ -103,11 +103,11 @@ public class MedicoController {
 
     public static Medico returnWithCrm(int crm){
 
-        List<Medico> medicosINbD = readMedico();
+
         int a = getPos(crm);
         if(a >= 0){
-            List<Medico> medicos = new ArrayList<>();
-            Medico medico = medicos.get(a);
+            List<Medico> medicosINbD = readMedico();
+            Medico medico = medicosINbD.get(a);
             return medico;
         }else{
             JOptionPane.showMessageDialog(null,"Medico não encontrado");

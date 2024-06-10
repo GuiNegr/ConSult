@@ -2,6 +2,7 @@ package View;
 
 import Controller.ControllerPaciente;
 import Controller.MedicoController;
+import Model.Login;
 import Model.Medico;
 import Model.Paciente;
 
@@ -18,7 +19,7 @@ public class UserInicial extends JFrame implements ActionListener {
     private JButton rdMedc;
     private JButton crtPac;
     private JButton crtConsu;
-    private JButton crtMedc;
+    private JButton exameAgend;
     private JPanel painelButtons;
     private JPanel painelLogo;
 
@@ -28,16 +29,14 @@ public class UserInicial extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         painelButtons = painelBotao();
-        painelButtons.setLayout(new GridLayout(5,1));
+        painelButtons.setLayout(new GridLayout(4,1));
         rdPac = botao("PESQUISAR PACIENTES");
         rdMedc = botao("PESQUISAR MEDICOS");
         crtPac = botao("CADASTRAR PACIENTES");
-        crtMedc = botao("CADASTRAR MEDICO");
         crtConsu = botao("AGENDAR CONSULTA");
         painelButtons.add(rdPac);
         painelButtons.add(rdMedc);
         painelButtons.add(crtPac);
-        painelButtons.add(crtMedc);
         painelButtons.add(crtConsu);
 
         painelLogo = painelLabel();
@@ -67,7 +66,6 @@ public class UserInicial extends JFrame implements ActionListener {
         JPanel painel = new JPanel();
         painel.setBackground(Color.white);
         add(painel);
-
         return painel;
     }
     private JButton botao(String text){
@@ -86,6 +84,16 @@ public class UserInicial extends JFrame implements ActionListener {
     public static Font monteserrat(){
         try{
             Font monte = Font.createFont(Font.TRUETYPE_FONT,new File("C:\\Users\\Gui\\Desktop\\Consult\\ConSult\\src\\Fonte\\Montserrat\\static\\Montserrat-Bold.ttf")).deriveFont(Font.BOLD,40);
+            return monte;
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static Font monteserrat(int size){
+        try{
+            Font monte = Font.createFont(Font.TRUETYPE_FONT,new File("C:\\Users\\Gui\\Desktop\\Consult\\ConSult\\src\\Fonte\\Montserrat\\static\\Montserrat-Bold.ttf")).deriveFont(Font.BOLD,size);
             return monte;
         } catch (Exception e){
             e.printStackTrace();
@@ -113,9 +121,9 @@ public class UserInicial extends JFrame implements ActionListener {
             new PacientesView(paciente);
             dispose();
         }
-        if(e.getSource() == crtMedc){
+        if(e.getSource() == exameAgend){
             dispose();
-            new MedicoAddUpdate();
+            new ExameCreateView();
         }
         if(e.getSource() == rdMedc){
             String crm = JOptionPane.showInputDialog(null,"Insira o crm do medico desejado");

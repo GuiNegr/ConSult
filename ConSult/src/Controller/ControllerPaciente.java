@@ -85,7 +85,6 @@ public class ControllerPaciente {
                 return null;
         }
     }
-
     private static List<String> readCpf(){
         String sql = "SELECT * FROM PACIENTES";
         List<String> cpfs = new ArrayList<>();
@@ -103,7 +102,6 @@ public class ControllerPaciente {
             return null;
         }
     }
-
     public static Paciente returnWithCpf(String cpf){
         List<Paciente> rdsPacientes = readPaciente();
         int pos = getPos(cpf);
@@ -123,5 +121,4 @@ public class ControllerPaciente {
             return pos;
         }else return  -1;
     }
-
 }
