@@ -1,6 +1,8 @@
 package Model;
 
 import java.io.FileInputStream;
+import java.sql.Date;
+import java.sql.Time;
 
 public class Exame {
     private String id;
@@ -9,8 +11,70 @@ public class Exame {
     private FileInputStream fotoExame;
     private int tamanho;
     private String idConsulta;
+    Date dataExame;
+    Time timeExame;
+    private  String cpfPaciente;
+
+
+    public Exame(String id, String nomeExame, String descExame, Time timeExame, Date dataExame, String cpfPaciente) {
+        this.id = id;
+        this.nomeExame = nomeExame;
+        this.descExame = descExame;
+        this.timeExame = timeExame;
+        this.dataExame = dataExame;
+        this.cpfPaciente = cpfPaciente;
+    }
+
+    public String getCpfPaciente() {
+        return cpfPaciente;
+    }
+
+    public void setCpfPaciente(String cpfPaciente) {
+        this.cpfPaciente = cpfPaciente;
+    }
+
+    public Exame(String nomeExame, String descExame, Date dataExame, Time timeExame, String cpfPaciente) {
+        this.nomeExame = nomeExame;
+        this.descExame = descExame;
+        this.dataExame = dataExame;
+        this.timeExame = timeExame;
+        this.cpfPaciente = cpfPaciente;
+    }
+
+    public Exame(String id, String nomeExame, String descExame, String idConsulta, Date dataExame, Time timeExame) {
+        this.id = id;
+        this.nomeExame = nomeExame;
+        this.descExame = descExame;
+        this.idConsulta = idConsulta;
+        this.dataExame = dataExame;
+        this.timeExame = timeExame;
+    }
 
     public Exame() {
+    }
+
+    public Date getDataExame() {
+        return dataExame;
+    }
+
+    public void setDataExame(Date dataExame) {
+        this.dataExame = dataExame;
+    }
+
+    public Time getTimeExame() {
+        return timeExame;
+    }
+
+    public void setTimeExame(Time timeExame) {
+        this.timeExame = timeExame;
+    }
+
+    public Exame(String nomeExame, String descExame, String idConsulta, Date dataExame, Time timeExame) {
+        this.nomeExame = nomeExame;
+        this.descExame = descExame;
+        this.idConsulta = idConsulta;
+        this.dataExame = dataExame;
+        this.timeExame = timeExame;
     }
 
     public Exame(String nomeExame, String descExame, FileInputStream fotoExame, String idConsulta) {
@@ -71,5 +135,20 @@ public class Exame {
 
     public void setTamanho(int tamanho) {
         this.tamanho = tamanho;
+    }
+
+    @Override
+    public String toString() {
+        return "Exame{" +
+                "id='" + id + '\'' +
+                ", nomeExame='" + nomeExame + '\'' +
+                ", descExame='" + descExame + '\'' +
+                ", fotoExame=" + fotoExame +
+                ", tamanho=" + tamanho +
+                ", idConsulta='" + idConsulta + '\'' +
+                ", dataExame=" + dataExame +
+                ", timeExame=" + timeExame +
+                ", cpfPaciente='" + cpfPaciente + '\'' +
+                '}';
     }
 }
