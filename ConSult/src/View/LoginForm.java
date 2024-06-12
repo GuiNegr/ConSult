@@ -69,7 +69,8 @@ public class LoginForm extends JFrame implements ActionListener{
             } else if (stg.equalsIgnoreCase("ADMIN")) {
                 JOptionPane.showMessageDialog(null,"olá admin");
             }else if(stg.equalsIgnoreCase("MEDICO")){
-                JOptionPane.showMessageDialog(null,"olá medico");
+                new MedicoInterface();
+                dispose();
             }else {
                 JOptionPane.showMessageDialog(null,"ERRO DE USUARIO NÃO ENCONTRADO");
             }

@@ -1,7 +1,10 @@
 package View;
 
+import Controller.AgendaExameController;
 import Controller.ConsultaController;
+import Controller.ExameController;
 import Model.Consulta;
+import Model.Exame;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
@@ -10,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.*;
 import java.text.ParseException;
 
 public class AgendarConsulta extends JFrame implements ActionListener {
@@ -26,17 +30,20 @@ public class AgendarConsulta extends JFrame implements ActionListener {
     public JButton agendarConsulta;
     public JButton voltar;
     private JPanel painelCombo;
-    MaskFormatter mascaraData = new MaskFormatter("####-##-##");
+    MaskFormatter mascaraData;
+    MaskFormatter mascaraHora;
 
     public AgendarConsulta() throws ParseException {
+        mascaraData = new MaskFormatter("2024-##-##");
+        mascaraHora  = new MaskFormatter("##:##:00");
         setTitle("Agendamento de consultas");
         setSize(1240, 720);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         dataConsulta = label("DATA DA CONSULTA");
-        dataout = textField();
+        dataout = textField(mascaraData);
         horaConsulta = label("HORA DA CONSULTA");
-        horaOut = text();
+        horaOut = textField(mascaraHora);
         cpfFk = label("CPF DO PACIENTE");
         cpfOutfk = text();
         crmFk = label("CRM DO MEDICO");
@@ -66,8 +73,8 @@ public class AgendarConsulta extends JFrame implements ActionListener {
         return txt;
     }
 
-    private JFormattedTextField textField(){
-        JFormattedTextField txt = new JFormattedTextField(mascaraData);
+    private JFormattedTextField textField(MaskFormatter mask){
+        JFormattedTextField txt = new JFormattedTextField(mask);
         txt.setFont(UserInicial.monteserrat());
         txt.setForeground(new Color(156, 65, 235));
         add(txt);
@@ -100,9 +107,10 @@ public class AgendarConsulta extends JFrame implements ActionListener {
             Date d = Date.valueOf(dataout.getText());
             Time t = Time.valueOf(horaOut.getText());
             String cpf = cpfOutfk.getText();
-            int crm = Integer.parseInt(crmOut.getText());
-            Consulta consulta = new Consulta(d, t, cpf, crm);
-            ConsultaController.CreateConsulta(consulta);
+            String crm = crmOut.getText();
+            Exame exame = new Exame("2",cpf,crm,"1",d,t);
+            AgendaExameController a = new AgendaExameController();
+            a.UpdateAgenda(exame);
             dataout.setText(" ");
             horaOut.setText(" ");
             cpfOutfk.setText(" ");

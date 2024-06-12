@@ -28,6 +28,18 @@ id_fk_medico int not null,
 foreign key(id_fk_medico) references Medicos(crmMedico)
 )
 
+
+create table exames(
+id int primary key auto_increment,
+nomeExame varchar(50) not null,
+descExame varchar(255) not null,
+fotoExame longblob,
+idConsulta int,
+foreign key(idConsulta) references consultas(id_consulta)
+);
+
+
+
 create table login(
 id int primary key auto_increment,
 login varchar(50) not null,
