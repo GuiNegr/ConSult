@@ -36,11 +36,11 @@
 - [x] inteface Grafica - User
 - [x] View medico
 - [x] view de cadastro
-- [ ] view consulta
-- [ ] Crianção do site para marcação de consulta
-- [ ] Criação do crud de exames
-- [ ] Criação do view do crud de exames
-- [ ] Finalização
+- [x] view consulta
+- [x] Crianção do site para marcação de consulta
+- [x] Criação do crud de exames
+- [x] Criação do view do crud de exames
+- [x] Finalização
 
 
 
