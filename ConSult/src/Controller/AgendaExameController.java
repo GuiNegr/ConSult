@@ -10,7 +10,7 @@ import java.util.List;
 public class AgendaExameController {
 
 
-    public void createAgenda(Exame exame){
+    public static void createAgenda(Exame exame){
             String sql = "INSERT INTO AGENDAEXAME (NOMEEXAME,DESCEXAME,DATAEXAME,HORAEXAME,cpfpacientefk) VALUES (?,?,?,?,?)";
             try {
                 Connection connection = new ConexaoDao().conecta();
@@ -25,7 +25,7 @@ public class AgendaExameController {
                 JOptionPane.showMessageDialog(null,e.getMessage());
             }
     }
-    public void deleteAgenda(String id){
+    public static void deleteAgenda(String id){
         String sql = "DELETE FROM AGENDAEXAME WHERE ID = ?";
         try {
             Connection connection = new ConexaoDao().conecta();
@@ -37,7 +37,7 @@ public class AgendaExameController {
         }
     }
 
-    public void UpdateAgenda(Exame exame){
+    public static void UpdateAgenda(Exame exame){
         String sql = "UPDATE  agendaexame set nomeExame = ? , descExame = ?, dataExame = ?, horaExame = ?,CPFPACIENTEFK = ? WHERE ID = ?";
         try {
             Connection connection = new ConexaoDao().conecta();
@@ -54,7 +54,7 @@ public class AgendaExameController {
         }
     }
 
-    public List<Exame> readExame(){
+    public static List<Exame> readExame(){
         String sql = "select * from agendaexame";
         List<Exame> exames = new ArrayList<>();
         try {

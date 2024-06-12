@@ -2,23 +2,17 @@ package View;
 
 import Controller.AgendaExameController;
 import Controller.ComponentView;
-import Controller.ConsultaController;
-import Controller.ExameController;
-import Model.Consulta;
 import Model.Exame;
 
 import javax.swing.*;
-import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.sql.Time;
-import java.util.*;
 import java.text.ParseException;
 
-public class AgendarConsulta extends JFrame implements ActionListener {
-
+public class AgendarConsultaMed extends JFrame implements ActionListener {
 
     private JLabel dataConsulta;
     private JTextField dataout;
@@ -31,7 +25,7 @@ public class AgendarConsulta extends JFrame implements ActionListener {
     public JButton agendarConsulta;
     public JButton voltar;
 
-    public AgendarConsulta() throws ParseException {
+    public AgendarConsultaMed() throws ParseException {
         setTitle("Agendamento de consultas");
         setSize(1280,720);
         setLocationRelativeTo(null);
@@ -81,7 +75,7 @@ public class AgendarConsulta extends JFrame implements ActionListener {
         }
         if (e.getSource() == voltar) {
             dispose();
-            new UserInicial();
+            new MedicoInterface();
         }
     }
 }
