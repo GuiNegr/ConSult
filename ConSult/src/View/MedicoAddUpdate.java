@@ -1,5 +1,6 @@
 package View;
 
+import Controller.ComponentView;
 import Controller.MedicoController;
 import Model.Medico;
 import com.sun.jdi.Value;
@@ -26,20 +27,32 @@ public class MedicoAddUpdate extends JFrame implements ActionListener {
 
     public MedicoAddUpdate(){
         setTitle("Medico: Form");
-        setSize(800,600);
+        setSize(1280, 720);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        getContentPane().setBackground(new Color(18,103,227));
-        nomeMedico = label("Nome: ");
-        outNome = textField();
-        crmMedico = label("Crm: ");
-        outCrm = textField();
-        diasDaSemana = label("Dias Disponiveis");
-        outDias = textField("Ex: Seg,terc,quart");
-        consultorio = label("Consultorio: ");
-        outConsultorio = textField();
-        botaoCad = botao("cad medico");
-        voltar = botao("Voltar");
+
+        nomeMedico = ComponentView.label("Nome: ");
+        outNome = ComponentView.text();
+
+        crmMedico =  ComponentView.label("Crm: ");
+        outCrm = ComponentView.text();
+
+        diasDaSemana =  ComponentView.label("Dias Disponiveis");
+        outDias = ComponentView.text("Ex: Seg,terc,quart");
+
+        consultorio =  ComponentView.label("Consultorio: ");
+        outConsultorio = ComponentView.text();
+
+        add(nomeMedico); add(outNome); add(crmMedico); add(outCrm); add(diasDaSemana); add(outDias); add(consultorio); add(outConsultorio);
+
+        botaoCad = ComponentView.botao("cad medico");
+        botaoCad.addActionListener(this);
+        add(botaoCad);
+
+        voltar = ComponentView.botao("Voltar");
+        voltar.addActionListener(this);
+        add(voltar);
+
         getContentPane().setLayout(new GridLayout(5,2));
         setVisible(true);
     }
@@ -50,57 +63,34 @@ public class MedicoAddUpdate extends JFrame implements ActionListener {
         setSize(800,600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        getContentPane().setBackground(new Color(18,103,227));
-        nomeMedico = label("Nome: ");
-        outNome = textField(medico.getNomeMedico());
-        crmMedico = label("Crm: ");
-        outCrm = textField(String.valueOf(medico.getCrmMedico()));
-        diasDaSemana = label("Dias Disponiveis");
-        outDias = textField(medico.getDiaDaSemana());
-        consultorio = label("Consultorio: ");
-        outConsultorio = textField(String.valueOf(medico.getConsultorio()));
-        botaoUpdate = botao("Atualizar medico");
-        voltar = botao("Voltar");
+
+
+        nomeMedico = ComponentView.label("Nome: ");
+        outNome = ComponentView.text(medico.getNomeMedico());
+
+        crmMedico = ComponentView.label("Crm: ");
+        outCrm = ComponentView.text(String.valueOf(medico.getCrmMedico()));
+
+        diasDaSemana = ComponentView.label("Dias Disponiveis");
+        outDias = ComponentView.text(medico.getDiaDaSemana());
+
+        consultorio = ComponentView.label("Consultorio: ");
+        outConsultorio = ComponentView.text(String.valueOf(medico.getConsultorio()));
+
+        add(nomeMedico); add(outNome); add(crmMedico); add(outCrm); add(diasDaSemana); add(outDias); add(consultorio); add(outConsultorio);
+
+        botaoUpdate = ComponentView.botao("Atualizar medico");
+        botaoUpdate.addActionListener(this);
+        add(botaoUpdate);
+
+
+        voltar = ComponentView.botao("Voltar");
+        voltar.addActionListener(this);
+        add(voltar);
         getContentPane().setLayout(new GridLayout(5,2));
         setVisible(true);
     }
 
-    private JLabel label(String text){
-        JLabel label = new JLabel();
-        label.setForeground(Color.white);
-        label.setFont(UserInicial.monteserrat());
-        label.setText(text);
-        add(label);
-        return label;
-    }
-
-    private JTextField textField(){
-        JTextField text = new JTextField();
-        text.setForeground(new Color(140,18,227));
-        text.setFont(UserInicial.monteserrat());
-        add(text);
-        return text;
-    }
-
-    private JTextField textField(String txt){
-        JTextField text = new JTextField();
-        text.setForeground(new Color(140,18,227));
-        text.setText(txt);
-        text.setFont(UserInicial.monteserrat());
-        add(text);
-        return text;
-    }
-
-    private JButton botao(String text){
-        JButton botao = new JButton();
-        botao.setFont(UserInicial.monteserrat());
-        botao.setText(text);
-        botao.setBackground(new Color(140,18,227));
-        botao.setForeground(Color.white);
-        botao.addActionListener(this);
-        add(botao);
-        return botao;
-    }
 
 
     @Override

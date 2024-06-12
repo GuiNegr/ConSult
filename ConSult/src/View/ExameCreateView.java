@@ -1,5 +1,6 @@
 package View;
 
+import Controller.ComponentView;
 import Controller.ExameController;
 import Model.Exame;
 
@@ -41,17 +42,16 @@ public class ExameCreateView extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        nomeExame = label("NOME DO EXAME:");
-        outNome = text();
+        nomeExame = ComponentView.label("NOME DO EXAME:");
+        outNome = ComponentView.text();
 
-        descExame = label("DESCRIÇÃO DO EXAME:");
-        outDesc = text();
+        descExame = ComponentView.label("DESCRIÇÃO DO EXAME:");
+        outDesc = ComponentView.text();
 
-        idConsulta = label("ID DE CONSULTA DO EXAME:");
-        outIdConsulta = text();
+        idConsulta = ComponentView.label("ID DE CONSULTA DO EXAME:");
+        outIdConsulta = ComponentView.text();
 
         painelLabels = new JPanel();
-        painelLabels.setBackground(new Color(139, 114, 236));
         painelLabels.add(nomeExame);
         painelLabels.add(outNome);
         painelLabels.add(descExame);
@@ -61,19 +61,22 @@ public class ExameCreateView extends JFrame implements ActionListener {
         painelLabels.setLayout(new GridLayout(6,1));
 
 
-        criar = botao("ADICIONAR EXAME");
-        voltar = botao("VOLTAR");
-        concluido = botao("Enivar");
+        criar = ComponentView.botao("ADICIONAR EXAME");
+        criar.addActionListener(this);
+        voltar = ComponentView.botao("VOLTAR");
+        voltar.addActionListener(this);
+        concluido = ComponentView.botao("Enivar");
+        concluido.addActionListener(this);
 
 
 
-        painelButtons = painelBotao();
+        painelButtons = ComponentView.painelBotao();
         painelButtons.add(voltar);
         painelButtons.add(criar);
         painelButtons.add(concluido);
         painelButtons.setLayout(new GridLayout(1,3));
 
-        painelLogo = painelLabel();
+        painelLogo = ComponentView.painelLabel();
         painelLogo.setLayout(new GridBagLayout());
         painelLogo.setBackground(new Color(139, 114, 236));
         GridBagConstraints gbc = new GridBagConstraints();
@@ -85,33 +88,8 @@ public class ExameCreateView extends JFrame implements ActionListener {
         add(painelLabels,BorderLayout.WEST);
         add(painelButtons,BorderLayout.SOUTH);
         add(painelLogo,BorderLayout.CENTER);
-        getContentPane().setBackground(new Color(236, 230, 114));
         setVisible(true);
 
-    }
-    public JTextField text(){
-        JTextField text = new JTextField();
-        text.setFont(UserInicial.monteserrat());
-        text.setForeground(new Color(71, 35, 189));
-        add(text);
-        return text;
-    }
-    private JLabel label(String text){
-        JLabel label = new JLabel();
-        label.setText(text);
-        label.setFont(UserInicial.monteserrat());
-        label.setForeground(Color.white);
-        add(label);
-        return label;
-    }
-    private JButton botao(String text){
-        JButton botao = new JButton();
-        botao.setText(text);
-        botao.setBackground(new Color(139, 114, 236));
-        botao.setForeground(new Color(231, 201, 144));
-        botao.addActionListener(this);
-        add(botao);
-        return botao;
     }
 
     public void adicionaImg(){
@@ -147,29 +125,29 @@ public class ExameCreateView extends JFrame implements ActionListener {
         }
         if(e.getSource() == voltar){
             dispose();
-            new UserInicial();
+            new MedicoInterface();
         }
         if(e.getSource() == concluido){
             ExameController.CreateExame(this.exame);
         }
     }
-    private JPanel painelLabel(){
+    public static JPanel painelLabel(){
         JPanel painel = new JPanel();
         painel.setBackground(Color.WHITE);
-        add(painel);
+
         return painel;
     }
-    private JPanel painelBotao(){
+    public static JPanel painelBotao(){
         JPanel painel = new JPanel();
         painel.setBackground(Color.white);
-        add(painel);
+
         return painel;
     }
 
     public JLabel la(String text){
         JLabel label1 = new JLabel();
         label1.setText(text);
-        label1.setFont(UserInicial.monteserrat(100));
+        label1.setFont(ComponentView.monteserrat(100));
         label1.setForeground(Color.white);
         add(label1);
         return label1;

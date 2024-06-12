@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.FileInputStream;
+import java.sql.Blob;
 import java.sql.Date;
 import java.sql.Time;
 
@@ -14,7 +15,15 @@ public class Exame {
     Date dataExame;
     Time timeExame;
     private  String cpfPaciente;
+    private Blob foto;
 
+    public Blob getFoto() {
+        return foto;
+    }
+
+    public void setFoto(Blob foto) {
+        this.foto = foto;
+    }
 
     public Exame(String id, String nomeExame, String descExame, Time timeExame, Date dataExame, String cpfPaciente) {
         this.id = id;
@@ -87,6 +96,14 @@ public class Exame {
     public Exame(int tamanho, FileInputStream fotoExame) {
         this.tamanho = tamanho;
         this.fotoExame = fotoExame;
+    }
+
+    public Exame(String id, String nomeExame, String descExame, Blob foto, String idConsulta) {
+        this.id = id;
+        this.nomeExame = nomeExame;
+        this.descExame = descExame;
+        this.foto = foto;
+        this.idConsulta = idConsulta;
     }
 
     public String getId() {

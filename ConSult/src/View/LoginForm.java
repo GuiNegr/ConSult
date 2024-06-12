@@ -1,5 +1,6 @@
 package View;
 
+import Controller.ComponentView;
 import Controller.LoginController;
 
 import javax.swing.*;
@@ -15,45 +16,21 @@ public class LoginForm extends JFrame implements ActionListener{
 
 
     public LoginForm(){
-        setSize(300,300);
+        setSize(640, 400);
         setTitle("Login");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        loginTXT = textComponent("User Login");
-        passTxt = pass("User Pass");
-        botao = botao("LOGIN");
+        loginTXT = ComponentView.text("User Login");
+        passTxt = ComponentView.pass("User Pass");
+        add(loginTXT); add(passTxt);
+        botao = ComponentView.botao("LOGIN");
+        add(botao);
+        botao.addActionListener(this);
         getContentPane().setLayout(new GridLayout(3,1));
         setVisible(true);
     }
 
-    private JButton botao(String text){
-       JButton botao = new JButton();
-       botao.setBackground(new Color(139, 114, 236));
-       botao.setForeground(new Color(231, 201, 144));
-       botao.setText(text);
-       botao.addActionListener(this);
-       add(botao);
-       botao.setFont(new Font("robot",Font.BOLD,22));
-       return botao;
-    }
 
-    public JPasswordField pass(String text){
-        JPasswordField txt = new JPasswordField();
-        txt.setText(text);
-        txt.setForeground(new Color(231, 201, 144));
-        txt.setFont(new Font("robot",Font.BOLD,22));
-        add(txt);
-        return txt;
-    }
-
-    public JTextField textComponent(String text){
-      JTextField txt = new JTextField();
-      txt.setText(text);
-      txt.setForeground(new Color(231, 201, 144));
-      txt.setFont(new Font("robot",Font.BOLD,22));
-      add(txt);
-      return txt;
-    }
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == botao){
@@ -73,6 +50,7 @@ public class LoginForm extends JFrame implements ActionListener{
                 dispose();
             }else {
                 JOptionPane.showMessageDialog(null,"ERRO DE USUARIO NÃO ENCONTRADO");
+                new LoginForm();
             }
         }
     }

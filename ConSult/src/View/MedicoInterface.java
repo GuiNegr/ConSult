@@ -1,21 +1,21 @@
 package View;
 
+import Controller.ComponentView;
 import Controller.ControllerPaciente;
-import Controller.MedicoController;
-import Model.Login;
-import Model.Medico;
+import Controller.ExameController;
+import Model.Exame;
 import Model.Paciente;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
+import java.text.ParseException;
 
 public class MedicoInterface extends JFrame implements ActionListener {
     private JLabel consult;
     private JButton rdPac;
-    private JButton vizualizarConsulta;
+    private JButton viewEx;
     private JButton crcExame;
     private JButton agndConsult;
     private JPanel painelButtons;
@@ -26,19 +26,30 @@ public class MedicoInterface extends JFrame implements ActionListener {
         setTitle("Consult:MedicPainel");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        painelButtons = painelBotao();
+        painelButtons = ComponentView.painelBotao();
         painelButtons.setLayout(new GridLayout(4, 1));
-        rdPac = botao("PESQUISAR PACIENTES");
-        vizualizarConsulta = botao("VER HISTORICO DE PACIENTE");
-        crcExame = botao("CRIAR EXAME");
-        agndConsult = botao("Agendar consulta");
+
+        rdPac = ComponentView.botao("PESQUISAR PACIENTES");
+        rdPac.addActionListener(this);
+
+        viewEx = ComponentView.botao("VER EXAME DE PACIENTE");
+        viewEx.addActionListener(this);
+
+        crcExame = ComponentView.botao("CRIAR EXAME");
+        crcExame.addActionListener(this);
+
+
+        agndConsult = ComponentView.botao("AGENDAR CONSULTA");
+        agndConsult.addActionListener(this);
+
         painelButtons.add(agndConsult);
         painelButtons.add(rdPac);
-        painelButtons.add(vizualizarConsulta);
+        painelButtons.add(viewEx);
         painelButtons.add(crcExame);
 
-        painelLogo = painelLabel();
-        consult = label("ConSult");
+        painelLogo = ComponentView.painelLabel();
+        consult = ComponentView.label("ConSult");
+
         painelLogo.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -52,55 +63,31 @@ public class MedicoInterface extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-
-    private JPanel painelLabel() {
-        JPanel painel = new JPanel();
-        painel.setBackground(Color.WHITE);
-        add(painel);
-        return painel;
-    }
-
-    private JPanel painelBotao() {
-        JPanel painel = new JPanel();
-        painel.setBackground(Color.white);
-        add(painel);
-
-        return painel;
-    }
-
-    private JButton botao(String text) {
-        JButton botao = new JButton();
-        botao.setText(text);
-        Font fonte = monteserrat();
-        botao.setFont(fonte);
-        botao.setBackground(new Color(71, 35, 189, 255));
-        botao.setForeground(new Color(231, 201, 144));
-        botao.addActionListener(this);
-        add(botao);
-        return botao;
-
-    }
-
-    public static Font monteserrat() {
-        try {
-            Font monte = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\Gui\\Desktop\\Consult\\ConSult\\src\\Fonte\\Montserrat\\static\\Montserrat-Bold.ttf")).deriveFont(Font.BOLD, 40);
-            return monte;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    private JLabel label(String text) {
-        JLabel label = new JLabel();
-        label.setText(text);
-        label.setBackground(new Color(71, 35, 189, 255));
-        label.setFont(monteserrat());
-        return label;
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if(e.getSource() == rdPac){
+            String cpf = JOptionPane.showInputDialog(null,"Insira o cpf do paciente");
+            Paciente paciente = ControllerPaciente.returnWithCpf(cpf);
+            new PacientesView(paciente);
+            dispose();
+        }
+        if(e.getSource() == crcExame){
+            new ExameCreateView();
+            dispose();
+        }
+        if(e.getSource() == agndConsult ){
+            try{
+                new AgendarConsultaMed();
+                dispose();;
+            } catch (ParseException a){
+                JOptionPane.showMessageDialog(null, a.getMessage());
+            }
+        }
+        if(e.getSource() == viewEx){
+            String a = JOptionPane.showInputDialog(null,"INFOMRE O ID DO EXAME");
+            Exame exame = ExameController.listExame(a);
+            new ViewExame(exame);
+            dispose();
+        }
     }
 }
