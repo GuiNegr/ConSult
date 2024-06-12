@@ -102,6 +102,7 @@ public class ViewExame extends JFrame implements ActionListener {
                 ImageIcon icone = new ImageIcon(image);
                 Icon foto = new ImageIcon(icone.getImage());
                 labelImg.setIcon(foto);
+                labelImg.setText(" ");
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
