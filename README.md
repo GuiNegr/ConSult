@@ -11,6 +11,8 @@
 	Projeto feito utilizando o Modelo MVC
 
 
+
+
 # **TaskList**
 
 - [x] Criação Model(PACIENTE,MEDICO,CONSULTAS)
@@ -32,10 +34,13 @@
 - [x] Interface Grafica - Login
 - [x] aperfeiçoamento do login
 - [x] inteface Grafica - User
+- [x] View medico
+- [x] view de cadastro
+- [ ] view consulta
+- [ ] Crianção do site para marcação de consulta
+- [ ] Criação do crud de exames
+- [ ] Criação do view do crud de exames
 - [ ] Finalização
-
-
-
 
 
 
@@ -54,11 +59,18 @@
 	-User -Inicial
 		BorderLayout para colocar o componente de pesquisa.
 	-Medicos
-	
+
+# Tipos de usuarios
+
+-User 
+	-Cadastro de paciente.
+	-PESQUISAR PACIENTE
+	-AGENDAR CONSULTA
+	-AGENDAR EXAME // funcionalidade não aplicada
 
 
-
-
-#Extras
-Esse o meu canal aonde estou postando as atualizações do projeto e como está indo a construção.
-(https://www.youtube.com/channel/UCLhJXvljm3IgPezI7luSNEQ)
+-Medico
+	-agendamento de exame
+	-agendamento de consulta
+	-pesquisar paciente
+	-ver historico de paciente

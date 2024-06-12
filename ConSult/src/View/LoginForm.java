@@ -41,6 +41,8 @@ public class LoginForm extends JFrame implements ActionListener{
             if(stg.equalsIgnoreCase("USER")){
                 new UserInicial();
                 dispose();
+            if(stg.equalsIgnoreCase("USER")){
+                new UserInicial();
             } else if (stg.equalsIgnoreCase("ADMIN")) {
                 JOptionPane.showMessageDialog(null,"olá admin");
             }else if(stg.equalsIgnoreCase("MEDICO")){
